@@ -8,7 +8,6 @@ namespace ASM
 
         public String Type { get; private set; }
         public String? Plate { get; set; }
-
         public bool isAvailable { get; set; }
 
         public Slot(string type)
@@ -19,6 +18,8 @@ namespace ASM
             this.isAvailable = true;
             count++;
         }
+
+        
     }
 }
 

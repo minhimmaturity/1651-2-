@@ -21,6 +21,8 @@
             int choice;
             String? Plate;
 
+            Console.WriteLine(Program.price.ElementAt(2).Value);
+
         Start:
             do
             {
@@ -116,7 +118,7 @@
                         Start3:
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
-                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == false)
+                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == true)
                             {
                                 if (Plate != null)
                                 {
@@ -250,17 +252,18 @@
                             break;
 
                         case 2:
-                        if(currentParkingLot != null) {
-                            if (((SecurityGuard)currentUser).GetNumberOfAvailableSlot() == 0)
+                            if (currentParkingLot != null)
                             {
-                                Console.WriteLine("No available parking slot!");
+                                if (currentParkingLot.GetNumberOfAvailableSlot() == 0)
+                                {
+                                    Console.WriteLine("No available parking slot!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Number of available parking slot are: " + currentParkingLot.GetNumberOfAvailableSlot());
+                                    currentParkingLot.FindAvailableSlot();
+                                }
                             }
-                            else
-                            {
-                                Console.WriteLine("Number of available parking slot are: " + ((SecurityGuard)currentUser).GetNumberOfAvailableSlot());
-                                currentParkingLot.FindAvailableSlot();
-                            }
-                        }
                             break;
 
                         case 3:
@@ -268,10 +271,11 @@
                             break;
 
                         case 4:
+                        Console.WriteLine(currentParkingLot.PrintNotAvailableSlot());
                         Start3:
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
-                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == false)
+                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == true)
                             {
                                 if (Plate != null)
                                 {

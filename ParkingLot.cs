@@ -2,7 +2,7 @@
 {
     public class ParkingLot
     {
-        public Slot[] slots = null;
+        private Slot[] slots = null;
 
         public ParkingLot()
         {
@@ -10,17 +10,17 @@
             {
                 slots = new Slot[25];
 
-                for (int i = 1; i <= 10; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     slots[i] = new Slot("car");
                 }
 
-                for (int i = 11; i <= 20; i++)
+                for (int i = 10; i < 20; i++)
                 {
                     slots[i] = new Slot("motorbike");
                 }
 
-                for (int i = 21; i < 25; i++)
+                for (int i = 20; i < 25; i++)
                 {
                     slots[i] = new Slot("electricCar");
                 }
@@ -33,7 +33,7 @@
             {
                 foreach (Slot slot in slots)
                 {
-                    if (slot.Type == type && slot.Plate == null)
+                    if (slot != null && slot.Type == type && slot.Plate == null)
                     {
                         slot.Plate = plate;
                         return slot;
@@ -43,11 +43,11 @@
             return null;
         }
 
-        public bool ReturnSlot(string plate)
+        public bool ReturnSlot(String plate)
         {
             foreach (Slot slot in slots)
             {
-                if (slot.Plate == plate)
+                if (slot.Plate.Equals(plate) && slot != null)
                 {
                     slot.Plate = null;
                     return true;
@@ -70,9 +70,9 @@
                 {
                     foreach (Slot slot in slots)
                     {
-                        if (slot.Plate == null)
+                        if (slot != null && slot.Plate == null)
                         {
-                            System.Console.WriteLine("Slot " + slot.Id + slot.Type + " is available");
+                            System.Console.WriteLine("Slot " + slot.Id + " " + slot.Type + " is available");
                         }
                     }
                 }
@@ -90,13 +90,65 @@
             {
                 foreach (Slot slot in slots)
                 {
-                    if (slot.Plate == Plate && slot.Plate != null)
+                    if (slot.Plate == Plate && slot != null)
                     {
                         return true;
                     }
                 }
             }
             return false;
+        }
+
+        public int GetNumberOfAvailableSlot()
+        {
+            try
+            {
+                if (Program.currentParkingLot == null || slots == null)
+                {
+                    throw new System.Exception("Parking lot is not created");
+                }
+                else
+                {
+                    int count = 0;
+                    foreach (Slot s in slots)
+                    {
+                        if (s != null && s.Plate == null)
+                        {
+                            count++;
+                        }
+                    }
+                    return count;
+                }
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public Slot PrintNotAvailableSlot() {
+            try
+            {
+                if (Program.currentParkingLot == null || slots == null)
+                {
+                    throw new System.Exception("Parking lot is not created");
+                }
+                else
+                {
+                    foreach (Slot s in slots)
+                    {
+                        if (s != null && s.Plate != null)
+                        {
+                            Console.WriteLine("Slot " + s.Id + " " + s.Type + " " + s.Plate + " is not available");
+                        }
+                    }
+                }
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            return null;
         }
     }
 }

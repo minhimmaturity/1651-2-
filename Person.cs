@@ -34,12 +34,15 @@ namespace ASM
 
         public static Boolean login(String username, String password)
         {
-            foreach (Person p in persons)
+            if (Person.persons != null && Person.persons.Count > 0)
             {
-                if (p.UserName == username && p.Password == password)
+                foreach (Person p in persons)
                 {
-                    Program.currentUser = p;
-                    return true;
+                    if (p.UserName == username && p.Password == password)
+                    {
+                        Program.currentUser = p;
+                        return true;
+                    }
                 }
             }
 
@@ -56,42 +59,96 @@ namespace ASM
             return false;
         }
 
-        public Ticket Park(String type ,String Plate)
+        public Ticket Park(String type, String Plate)
         {
             Slot newSlot = Program.currentParkingLot.ReleaseSlot(type, Plate);
-            if(newSlot != null) {
+            if (newSlot != null)
+            {
                 Ticket newTicket = new Ticket(newSlot);
                 Ticket.tickets.Add(newTicket);
+                for (int i = 0; i < Ticket.tickets.Count; i++)
+                {
+                    Console.WriteLine(Ticket.tickets[i].Id);
+                }
                 return newTicket;
-            } 
+            }
             Console.WriteLine("Out of slot");
             return null;
             // Ticket.tickets.Add(new Ticket(carPlate, new Slot(carPlate)));
         }
 
-        public double? UnPark(String Plate)
+        public double? UnPark(string Plate)
         {
-            bool flag = Program.currentParkingLot.ReturnSlot(Plate);
-            if(flag) {
-                foreach(Ticket t in Ticket.tickets) {
-                    if(t.parkingSlot.Plate == Plate) {
+            if (Program.currentParkingLot.ReturnSlot(Plate))
+            {
+                foreach (Ticket t in Ticket.tickets)
+                {
+                    if (t.parkingSlot.Plate == Plate)
+                    {
+                        Console.WriteLine("Parking time: " + t.startParkingTime);
+                        Console.WriteLine("Unparking time: " + DateTime.UtcNow.ToLocalTime());
+
                         t.stopParkingTime = DateTime.UtcNow.ToLocalTime();
                         TimeSpan duration = (TimeSpan)(t.stopParkingTime - t.startParkingTime);
-                        double price = Program.price[t.parkingSlot.Type];
+
+                        Console.WriteLine("Duration: " + duration);
+
+                        double price = 0.0;
                         int totalHours = duration.Days * 24 + duration.Hours;
-                        if(totalHours <6) {
-                            return price;
-                        } 
-                        return totalHours * price;
-                    } 
+
+                        Console.WriteLine("Total hours: " + totalHours);
+
+                        if (Program.price.ElementAt(0).Key == t.parkingSlot.Type)
+                        {
+                            if (totalHours < 6)
+                            {
+                                price = Program.price.ElementAt(0).Value;
+                            }
+                            else
+                            {
+                                price = totalHours * Program.price.ElementAt(0).Value;
+                            }
+                        }
+                        else if (Program.price.ElementAt(1).Key == t.parkingSlot.Type)
+                        {
+                            if (totalHours < 6)
+                            {
+                                price = Program.price.ElementAt(1).Value;
+                            }
+                            else
+                            {
+                                price = totalHours * Program.price.ElementAt(1).Value;
+                            }
+                        }
+                        else
+                        {
+                            if (totalHours < 6)
+                            {
+                                price = Program.price.ElementAt(2).Value;
+                            }
+                            else
+                            {
+                                price = totalHours * Program.price.ElementAt(2).Value;
+                            }
+                        }
+
+                        Console.WriteLine("Price: " + price);
+                        return price;
+                    }
                 }
             }
+
+            Console.WriteLine("Plate number " + Plate + " not found in parking lot");
             return null;
         }
 
-        public void GetAllTicket() {
-            foreach(Ticket t in Ticket.tickets) {
-                if(t.parkingSlot.Plate == this.Name) {
+
+        public void GetAllTicket()
+        {
+            foreach (Ticket t in Ticket.tickets)
+            {
+                if (t.parkingSlot.Plate == this.Name && t != null)
+                {
                     Console.WriteLine(t.Id + " " + t.parkingSlot.Plate + " " + t.startParkingTime + " " + t.stopParkingTime);
                 }
             }
