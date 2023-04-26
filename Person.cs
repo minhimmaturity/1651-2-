@@ -11,28 +11,12 @@ namespace ASM
 
         public String Name { get; set; }
 
-        public DateTime birthDate {get; set;}
-
-        /**
-         * 0: Manager
-         * 1: SecurityGuard
-        */
-
-        // private Byte role;
-        // public Byte Role
-        // {
-        //     get { return role; }
-        //     set { role = value; }
-        // }
+        public DateTime birthDate { get; set; }
 
         public String? Password { get; set; }
 
         public String? UserName { get; set; }
 
-        /**
-         * 0: Logout
-         * 1: Login
-        */
         public Boolean isLogin { get; set; }
 
         public Person(String Name, DateTime birthDate, String UserName, String Password)
@@ -40,7 +24,7 @@ namespace ASM
             this.Id = count;
             this.Name = Name;
             isLogin = false;
-            // this.Role = Role;
+
             this.birthDate = birthDate;
             this.Password = Password;
             this.UserName = UserName;
@@ -50,19 +34,21 @@ namespace ASM
 
         public static Boolean login(String username, String password)
         {
-           foreach(Person p in persons) {
-                if (p.UserName == username && p.Password == password) {
+            foreach (Person p in persons)
+            {
+                if (p.UserName == username && p.Password == password)
+                {
                     Program.currentUser = p;
                     return true;
-                } 
-           }
+                }
+            }
 
-           return false;
+            return false;
         }
 
         // public static Boolean logout(String username)
         // {
-            
+
         // }
 
     }
