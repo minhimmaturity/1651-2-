@@ -1,0 +1,15 @@
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).csproj.AssemblyReference.cache
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).GeneratedMSBuildEditorConfig.editorconfig
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).AssemblyInfoInputs.cache
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).AssemblyInfo.cs
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).csproj.CoreCompileInputs.cache
+/Users/minhtt/Desktop/1651(2)/bin/Debug/net7.0/1651(2)
+/Users/minhtt/Desktop/1651(2)/bin/Debug/net7.0/1651(2).deps.json
+/Users/minhtt/Desktop/1651(2)/bin/Debug/net7.0/1651(2).runtimeconfig.json
+/Users/minhtt/Desktop/1651(2)/bin/Debug/net7.0/1651(2).dll
+/Users/minhtt/Desktop/1651(2)/bin/Debug/net7.0/1651(2).pdb
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).dll
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/refint/1651(2).dll
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).pdb
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/1651(2).genruntimeconfig.cache
+/Users/minhtt/Desktop/1651(2)/obj/Debug/net7.0/ref/1651(2).dll
