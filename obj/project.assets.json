@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\VCL\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VCL\\Codes\\1651_Minh\\1651(2).csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\1651-2-\\1651(2).csproj",
       "projectName": "1651(2)",
-      "projectPath": "C:\\Users\\VCL\\Codes\\1651_Minh\\1651(2).csproj",
-      "packagesPath": "C:\\Users\\VCL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VCL\\Codes\\1651_Minh\\obj\\",
+      "projectPath": "C:\\Users\\ADMIN\\1651-2-\\1651(2).csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMIN\\1651-2-\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\VCL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

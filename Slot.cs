@@ -9,11 +9,14 @@ namespace ASM
         public String Type { get; private set; }
         public String? Plate { get; set; }
 
+        public bool isAvailable { get; set; }
+
         public Slot(string type)
         {
             this.Id = count;
             this.Type = type;
             this.Plate = null;
+            this.isAvailable = true;
             count++;
         }
     }
