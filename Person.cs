@@ -46,10 +46,5 @@ namespace ASM
             return false;
         }
 
-        // public static Boolean logout(String username)
-        // {
-
-        // }
-
     }
 }
