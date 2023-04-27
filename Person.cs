@@ -77,12 +77,11 @@ namespace ASM
             // Ticket.tickets.Add(new Ticket(carPlate, new Slot(carPlate)));
         }
 
-        public double? UnPark(string Plate)
+        public double UnPark(string Plate)
         {
-            if (Program.currentParkingLot.ReturnSlot(Plate))
+
+            foreach (Ticket t in Ticket.tickets)
             {
-                foreach (Ticket t in Ticket.tickets)
-                {
                     if (t.parkingSlot.Plate == Plate)
                     {
                         Console.WriteLine("Parking time: " + t.startParkingTime);
@@ -103,10 +102,14 @@ namespace ASM
                             if (totalHours < 6)
                             {
                                 price = Program.price.ElementAt(0).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                             else
                             {
                                 price = totalHours * Program.price.ElementAt(0).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                         }
                         else if (Program.price.ElementAt(1).Key == t.parkingSlot.Type)
@@ -114,10 +117,14 @@ namespace ASM
                             if (totalHours < 6)
                             {
                                 price = Program.price.ElementAt(1).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                             else
                             {
                                 price = totalHours * Program.price.ElementAt(1).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                         }
                         else
@@ -125,21 +132,20 @@ namespace ASM
                             if (totalHours < 6)
                             {
                                 price = Program.price.ElementAt(2).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                             else
                             {
                                 price = totalHours * Program.price.ElementAt(2).Value;
+                                Program.currentParkingLot.ReturnSlot(Plate);
+                                return price;
                             }
                         }
-
-                        Console.WriteLine("Price: " + price);
-                        return price;
                     }
-                }
             }
+            return -1;
 
-            Console.WriteLine("Plate number " + Plate + " not found in parking lot");
-            return null;
         }
 
 
@@ -147,10 +153,7 @@ namespace ASM
         {
             foreach (Ticket t in Ticket.tickets)
             {
-                if (t.parkingSlot.Plate == this.Name && t != null)
-                {
-                    Console.WriteLine(t.Id + " " + t.parkingSlot.Plate + " " + t.startParkingTime + " " + t.stopParkingTime);
-                }
+                Console.WriteLine("ID: {0, -5} | Plate: {1, -10} | startParkingTime: {2, -15}", t.Id, t.parkingSlot.Plate, t.startParkingTime);
             }
         }
 

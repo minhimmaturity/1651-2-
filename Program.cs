@@ -12,9 +12,9 @@
         };
         public static void Main(string[] args)
         {
-            Person.persons.Add(new Manager("khanh", new DateTime(2003, 12, 02), "khanh", "1234"));
-            Person.persons.Add(new SecurityGuard("long", new DateTime(2003, 12, 02), "long", "1234"));
-            Person.persons.Add(new SecurityGuard("tung", new DateTime(2003, 12, 02), "tung", "1234"));
+            Person.persons.Add(new Manager("khanh", new DateTime(2003, 12, 02,0,0,0), "khanh", "1234"));
+            Person.persons.Add(new SecurityGuard("long", new DateTime(2003, 12, 02,0,0,0), "long", "1234"));
+            Person.persons.Add(new SecurityGuard("tung", new DateTime(2003, 12, 02,0,0,0), "tung", "1234"));
 
             String? userName;
             String? passWord;
@@ -57,7 +57,7 @@
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
 
-                            if (Plate != null && currentParkingLot.CheckAvailableCarPlate(Plate) == true)
+                            if (Plate != null)
                             {
                                 Console.WriteLine("Please choose vehicle type: ");
                                 Console.WriteLine(" 1. " + price.ElementAt(0).Key);
@@ -96,25 +96,30 @@
                                 Console.WriteLine("Invalid car plate!");
                                 goto Start2;
                             }
+
                             break;
 
-                        // case 2:
-                        //     if (currentParkingLot.GetNumberOfAvailableSlot() == 0)
-                        //     {
-                        //         Console.WriteLine("No available parking slot!");
-                        //     }
-                        //     else
-                        //     {
-                        //         Console.WriteLine("Number of available parking slot are: " + currentParkingLot.GetNumberOfAvailableSlot());
-                        //         currentParkingLot.FindAvailableSlot();
-                        //     }
-                        //     break;
+                        case 2:
+                            if (currentParkingLot != null)
+                            {
+                                if (currentParkingLot.GetNumberOfAvailableSlot() == 0)
+                                {
+                                    Console.WriteLine("No available parking slot!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Number of available parking slot are: " + currentParkingLot.GetNumberOfAvailableSlot());
+                                    currentParkingLot.FindAvailableSlot();
+                                }
+                            }
+                            break;
 
                         case 3:
                             ((Manager)currentUser).GetAllTicket();
                             break;
 
                         case 4:
+                        Console.WriteLine(currentParkingLot.PrintNotAvailableSlot());
                         Start3:
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();

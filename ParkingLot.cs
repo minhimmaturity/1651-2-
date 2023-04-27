@@ -47,7 +47,7 @@
         {
             foreach (Slot slot in slots)
             {
-                if (slot.Plate.Equals(plate) && slot != null)
+                if (slot.Plate.Equals(plate))
                 {
                     slot.Plate = null;
                     return true;

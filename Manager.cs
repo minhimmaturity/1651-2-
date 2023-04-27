@@ -37,7 +37,7 @@ namespace ASM
             {
                 if(p is SecurityGuard)
                 {
-                    System.Console.WriteLine(p.Name + " " + p.birthDate + " " + p.UserName + " ");
+                    System.Console.WriteLine("Name: {0, -5} | birthDate: {1, -10} | username: {2, -15}", p.Name, p.birthDate , p.UserName);
                 }
             }
         }

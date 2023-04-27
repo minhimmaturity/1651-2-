@@ -11,7 +11,7 @@ namespace ASM {
         public Ticket(Slot slot) {
             this.Id = count;
             this.parkingSlot = slot;
-            this.startParkingTime = new DateTime(1970, 1, 1, 0, 0, 0);
+            this.startParkingTime = DateTime.UtcNow.ToLocalTime();
             this.stopParkingTime = null;
             count++;
         }
