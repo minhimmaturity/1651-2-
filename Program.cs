@@ -2,8 +2,13 @@
 {
     public class Program
     {
+        // create a static variable to store current user
         public static Person currentUser;
-        public static ParkingLot currentParkingLot = new ParkingLot();
+
+        // create a static variable to store current parking lot
+        public static ParkingLotPool currentParkingLot = new ParkingLotPool();
+
+        // create a static variable to store price
         public static readonly Dictionary<string, double> price = new Dictionary<string, double>
         {
             { "car", 5.99 },
@@ -52,8 +57,8 @@
                     switch (choice)
                     {
                         case 1:
-
                         Start2:
+                            
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
 
@@ -102,14 +107,14 @@
                         case 2:
                             if (currentParkingLot != null)
                             {
-                                if (currentParkingLot.GetNumberOfAvailableSlot() == 0)
+                                if (((Manager)currentUser).GetNumberOfAvailableSlot() == 0)
                                 {
                                     Console.WriteLine("No available parking slot!");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Number of available parking slot are: " + currentParkingLot.GetNumberOfAvailableSlot());
-                                    currentParkingLot.FindAvailableSlot();
+                                    Console.WriteLine("Number of available parking slot are: " + ((Manager)currentUser).GetNumberOfAvailableSlot());
+                                    ((Manager)currentUser).FindAvailableSlot();
                                 }
                             }
                             break;
@@ -119,11 +124,11 @@
                             break;
 
                         case 4:
-                        Console.WriteLine(currentParkingLot.PrintNotAvailableSlot());
+                        Console.WriteLine(((Manager)currentUser).PrintNotAvailableSlot());
                         Start3:
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
-                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == true)
+                            if (((Manager)currentUser).CheckAvailableCarPlate(Plate) == true)
                             {
                                 if (Plate != null)
                                 {
@@ -159,6 +164,7 @@
                             break;
 
                         case 7:
+                            ((Manager)currentUser).GetSecurityGuards();
                             Console.WriteLine("Enter user that you want to delete: ");
                             int securityID = Convert.ToInt32(Console.ReadLine());
                             if (securityID != null)
@@ -259,14 +265,14 @@
                         case 2:
                             if (currentParkingLot != null)
                             {
-                                if (currentParkingLot.GetNumberOfAvailableSlot() == 0)
+                                if (((SecurityGuard)currentUser).GetNumberOfAvailableSlot() == 0)
                                 {
                                     Console.WriteLine("No available parking slot!");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Number of available parking slot are: " + currentParkingLot.GetNumberOfAvailableSlot());
-                                    currentParkingLot.FindAvailableSlot();
+                                    Console.WriteLine("Number of available parking slot are: " + ((SecurityGuard)currentUser).GetNumberOfAvailableSlot());
+                                    ((SecurityGuard)currentUser).FindAvailableSlot();
                                 }
                             }
                             break;
@@ -276,11 +282,11 @@
                             break;
 
                         case 4:
-                        Console.WriteLine(currentParkingLot.PrintNotAvailableSlot());
+                        Console.WriteLine(((SecurityGuard)currentUser).PrintNotAvailableSlot());
                         Start3:
                             Console.WriteLine("Please enter car plate: ");
                             Plate = Console.ReadLine();
-                            if (currentParkingLot.CheckAvailableCarPlate(Plate) == true)
+                            if (((SecurityGuard)currentUser).CheckAvailableCarPlate(Plate) == true)
                             {
                                 if (Plate != null)
                                 {
